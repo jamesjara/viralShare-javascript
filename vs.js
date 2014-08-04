@@ -1,9 +1,10 @@
 
 var ShareToUse = (function() {
-  var data;
+  var data; 
   var unlock = function() {};
   var setData = function( data ){ this.data = data;  };
   var publishFB = function() {
+	self = this;
     FB.ui({
       method: "stream.publish",
       attachment: this.data ,
@@ -15,7 +16,7 @@ var ShareToUse = (function() {
           $.cookie("ShareToUse-Key", 0);
         } //UPDATE
       } else {
-        alert("OK, Si no la colaboras, no continuas.");
+        alert( self.data.error );
       };
     });
   };
@@ -49,5 +50,5 @@ var ShareToUse = (function() {
     publish: publishFB,
     LockFullPage: lock,
     setData: setData
-  }
+  };
 }()); 
