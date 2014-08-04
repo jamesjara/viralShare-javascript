@@ -2,9 +2,7 @@
 var ShareToUse = (function() {
   var data;
   var unlock = function() {};
-  var setData = function( data ){
-	this.data = data;	
-  };
+  var setData = function( data ){ this.data = data;  };
   var publishFB = function() {
     FB.ui({
       method: "stream.publish",
@@ -41,8 +39,10 @@ var ShareToUse = (function() {
       var val = $.cookie("ShareToUse-Key");
       val++;
       $.cookie("ShareToUse-Key", val);
-    } else $.cookie("ShareToUse-Key", 0);
-  }
+    } else {
+	  $.cookie("ShareToUse-Key", 0);
+	}
+  };
   return {
     countPage: count,
     unlock: unlock,
